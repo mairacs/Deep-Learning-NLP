@@ -66,7 +66,7 @@ The dataset splits (`train`, `val`, `test`) are included under [/datasets](./dat
   • Optimizer: `Adam`, learning rate `1e-4`  
   • Batch size: 128  
   • Early stopping (patience=5) to prevent overfitting  
-  • Max 50 `epochs  `
+  • Max 50 `epochs`
 - **Hyperparameter Tuning**:  
   • Manual experiments varying depth, `batch size`, activation functions, optimizers (`SGD`, `Adam`, `AdamW`), `learning rate`, and `loss functions`.  
   • Automated search with **Optuna** confirmed best parameters.  
@@ -96,8 +96,8 @@ The dataset splits (`train`, `val`, `test`) are included under [/datasets](./dat
 - **Implementation**: HuggingFace **Transformers** + **PyTorch**. Tweets tokenized with the respective pretrained tokenizers (max length = 60 tokens). Input converted to `input_ids` + `attention_masks` tensors, batched via PyTorch `DataLoader`.  
 
 - **Training Setup**:  
-  • Optimizer: `AdamW` with weight decay = `0.01 ` 
-  • Learning rate: `2e-5 ` 
+  • Optimizer: `AdamW` with weight decay = `0.01`  
+  • Learning rate: `2e-5`  
   • Batch sizes: 32 for BERT, 16 for DistilBERT  
   • Epochs: 2  
   • Learning rate scheduler: linear decay with warmup  
@@ -109,7 +109,6 @@ The dataset splits (`train`, `val`, `test`) are included under [/datasets](./dat
 📊 **Best performance**:  
 - **BERT**: Validation accuracy **85.6%**
 - **DistilBERT**: Validation accuracy **84.8%**
-
 
 ---
 
@@ -126,12 +125,25 @@ The dataset splits (`train`, `val`, `test`) are included under [/datasets](./dat
 ## ⚙️ Installation & Usage
 
 ### Requirements
-- Python 3.10+
-- Core libraries:  
-  - `pandas`, `numpy`, `matplotlib`, `seaborn`  
-  - `scikit-learn`  
-  - `torch`, `gensim`, `optuna`  
-  - `transformers`, `nltk`, `contractions`
+- Python `3.10+`
+- Core libraries:
+  - `pandas`, `numpy`, `matplotlib`, `seaborn`
+  - `nltk` (TweetTokenizer)
+  - `contractions`
+- Machine Learning:
+  - `scikit-learn`
+- Deep Learning:
+  - `torch` (PyTorch)
+  - `gensim` (for GloVe → Word2Vec conversion)
+  - `optuna` (hyperparameter optimization)
+- Transformers:
+  - `transformers` (HuggingFace)
+
+### Setup
+Install dependencies with:
+``` bash
+pip install pandas numpy matplotlib seaborn nltk contractions scikit-learn torch gensim optuna transformers
+```
 
 ### Running an assignment
 Example: Assignment 1 (Logistic Regression)
