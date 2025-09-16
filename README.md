@@ -48,7 +48,6 @@ The dataset splits (`train`, `val`, `test`) are included under [/datasets](./dat
 - Recall: **0.813**  
 - F1-score: **0.807**  
 
-The learning curve showed that, with more data, validation accuracy steadily improved and converged closer to training accuracy, reducing overfitting. Despite its simplicity, the TF-IDF + Logistic Regression pipeline achieved strong baseline results on the Twitter sentiment classification task.  
 
 ---
 
@@ -60,16 +59,16 @@ The learning curve showed that, with more data, validation accuracy steadily imp
   • Contraction expansion (e.g., *isn’t → is not*)  
   • Removal of mentions, hashtags, URLs, special characters, repeated letters/spaces  
   • Slang normalization (e.g., *luv → love*, *idk → I do not know*)  
-- **Embeddings**: Tweets represented via averaged **GloVe embeddings (Twitter, 200d)**, converted to Word2Vec format for compatibility with Gensim.  
-- **Model Architecture**: PyTorch **Deep Feedforward Neural Network** with 3 hidden layers (512, 256, 128 neurons), ReLU activations, Dropout (0.3), and Batch Normalization.  
+- **Embeddings**: Tweets represented via averaged **GloVe embeddings (Twitter, 200d)**, converted to `Word2Vec` format for compatibility with `Gensim`.  
+- **Model Architecture**: `PyTorch` **Deep Feedforward Neural Network** with 3 hidden layers (512, 256, 128 neurons), `ReLU` activations, `Dropout` (0.3), and `Batch Normalization`.  
 - **Training Setup**:  
   • Loss: `BCEWithLogitsLoss`  
-  • Optimizer: **Adam**, learning rate `1e-4`  
+  • Optimizer: `Adam`, learning rate `1e-4`  
   • Batch size: 128  
   • Early stopping (patience=5) to prevent overfitting  
-  • Max 50 epochs  
+  • Max 50 `epochs  `
 - **Hyperparameter Tuning**:  
-  • Manual experiments varying depth, batch size, activation functions, optimizers (SGD, Adam, AdamW), learning rate, and loss functions.  
+  • Manual experiments varying depth, `batch size`, activation functions, optimizers (`SGD`, `Adam`, `AdamW`), `learning rate`, and `loss functions`.  
   • Automated search with **Optuna** confirmed best parameters.  
 - **Evaluation**: Accuracy, precision, recall, F1-score, confusion matrices, learning curves. Results reported for both validation and Kaggle test set.  
 
@@ -78,8 +77,6 @@ The learning curve showed that, with more data, validation accuracy steadily imp
 - Precision: **0.7918**  
 - Recall: **0.7870**  
 - F1-score: **0.7894**  
-
-Learning curves showed stable convergence with minimal overfitting thanks to dropout, batch normalization, and early stopping.
 
 ---
 
@@ -99,8 +96,8 @@ Learning curves showed stable convergence with minimal overfitting thanks to dro
 - **Implementation**: HuggingFace **Transformers** + **PyTorch**. Tweets tokenized with the respective pretrained tokenizers (max length = 60 tokens). Input converted to `input_ids` + `attention_masks` tensors, batched via PyTorch `DataLoader`.  
 
 - **Training Setup**:  
-  • Optimizer: **AdamW** with weight decay = 0.01  
-  • Learning rate: 2e-5  
+  • Optimizer: `AdamW` with weight decay = `0.01 ` 
+  • Learning rate: `2e-5 ` 
   • Batch sizes: 32 for BERT, 16 for DistilBERT  
   • Epochs: 2  
   • Learning rate scheduler: linear decay with warmup  
@@ -113,18 +110,17 @@ Learning curves showed stable convergence with minimal overfitting thanks to dro
 - **BERT**: Validation accuracy **85.6%**
 - **DistilBERT**: Validation accuracy **84.8%**
 
-Despite being smaller, DistilBERT reached nearly the same performance as BERT, confirming its efficiency for real-world deployment. 
 
 ---
 
 ## Results Summary
 
-| Model                | Features/Embeddings  | Validation Accuracy | Kaggle Test Accuracy |
-|----------------------|-----------------------|---------------------|-----------------------|
-| Logistic Regression  | TF-IDF               | ~80.5%              | ~80.2%               |
-| FFNNs                | Word2Vec (GloVe 200d)| ~79.1%              | ~78.9%               |
-| BERT                 | HuggingFace          | ~85.6%              | ~85.6%               |
-| DistilBERT           | HuggingFace          | ~84.8%              | ~85.8%               |
+| Model                | Features/Embeddings  | Validation Accuracy |
+|----------------------|-----------------------|---------------------|
+| Logistic Regression  | TF-IDF               | ~80.5%              |
+| FFNNs                | Word2Vec (GloVe 200d)| ~79.1%              |
+| BERT                 | HuggingFace          | ~85.6%              | 
+| DistilBERT           | HuggingFace          | ~84.8%              | 
 
 
 ## ⚙️ Installation & Usage
@@ -148,12 +144,9 @@ python LogisticRegression.py
 
 
 ## Acknowledgments
-This project was developed as part of the [Artificial Intelligence II (ΥΣ19)](.https://www.di.uoa.gr/en/studies/undergraduate/805) course  
+This project was developed as part of the [Artificial Intelligence II (ΥΣ19)](https://www.di.uoa.gr/en/studies/undergraduate/805) course  
 at the Department of Informatics and Telecommunications, National and Kapodistrian University of Athens (NKUA/UoA),  
-under the supervision of [Prof. Manolis Koubarakis](.https://cgi.di.uoa.gr/~koubarak/).  
-
-I would also like to thank the teaching staff and the course TAs for their guidance and support throughout the assignments.
-
+under the supervision of [Prof. Manolis Koubarakis](https://cgi.di.uoa.gr/~koubarak/).  
 
 ## License
 
